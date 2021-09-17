@@ -1,0 +1,162 @@
+---
+title: Cover - step payment
+eleventyNavigation:
+  key: New Energy
+  parent: thames-water
+  title: View prototype
+  excerpt: Cover - step 4 payment.
+layout: nucleus-partnership
+---
+
+<ns-panel>
+  <ns-progress steps="4" current="3" info="Payment" next="Account setup"></ns-progress>
+  <ns-column>
+  <h1 class="enlighten"><b>Payment</b></h1>
+  </ns-column>
+</ns-panel>
+
+
+<ns-panel>
+
+  <ns-column>
+  <h3 class="h3 enlighten">How would you like to pay?</h3>
+  <ns-column>
+
+  <ns-column basketballcourt="" hockeypitch="" footballpitch="2" rugbypitch="2" polofield="2">
+
+    <div>
+      <ns-inputter name="monthly-direct-debit" value="">
+      <ns-selector>
+      <input type="radio" id="dd-monthly" name="question" value="monthly" checked="">
+      <label for="dd-monthly">Monthly Direct Debit</label>
+      <ns-content slot="description" id="1a">
+      <h3 class="h2 enlighten"><b>£2.99</b> <span>per month</span></h3>
+      <p class="p-normal">That's <b>£35.88</b> per year</p>
+      </ns-content>
+      </ns-selector>
+      </ns-inputter>
+    </div>
+
+    <div>
+      <ns-inputter name="annual-direct-debit" value="">
+      <ns-selector>
+      <input type="radio" id="dd-annual" name="question" value="annual">
+      <label for="dd-annual">Annual Direct Debit</label>
+      <ns-content slot="description" id="1b">
+      <h3 class="h2 enlighten"><b>£35.88</b> <span>for 12 months</span></h3>
+      <p class="p-normal">That's <b>£2.99</b> per month</p>
+      </ns-content>
+      </ns-selector>
+      </ns-inputter>
+    </div>
+
+  </ns-column>
+
+</ns-panel>
+
+
+<ns-panel>
+
+  <ns-column>
+  <h2 class="h2 enlighten">You're setting up a Direct Debit for <b>£2.99</b> per month for:</h2>
+  <ns-column>
+
+  <ns-column basketballcourt="" hockeypitch="" footballpitch="3" rugbypitch="3" polofield="3">
+
+    <div>
+      <ns-inputter name="plumbing-&amp;-drains-cover" value="">
+      <ns-selector decoration="pipe-and-drain" checked="">
+      <input type="checkbox" id="question-plumbing" name="question" value="plumbing" checked="">
+      <label for="question-plumbing">Plumbing &amp; Drains Cover</label>
+      <ns-content slot="description" id="selector-nsid-kqo6s0t0lgh">
+      <h3 class="h4 enlighten"><b>£0.99</b> <span>per month</span></h3>
+      <p class="p-normal">Excess <b>£60.00</b> </p>
+      </ns-content>
+      </ns-selector>
+      </ns-inputter>
+    </div>
+
+    <div>
+      <ns-inputter name="boiler-breakdown-cover" value="">
+      <ns-selector decoration="boiler-repair" checked="">
+      <input type="checkbox" id="question-boiler" name="question" value="boiler" checked="">
+      <label for="question-boiler">Boiler Breakdown Cover</label>
+      <ns-content slot="description" id="selector-nsid-kqo6s0t0lgi">
+      <h3 class="h4 enlighten"><b>£1.00</b> <span>per month</span></h3>
+      <p class="p-normal">Excess <b>£99.00</b> </p>
+      </ns-content>
+      </ns-selector>
+      </ns-inputter>
+    </div>
+
+    <div>
+      <ns-inputter name="home-electrical-cover" value="">
+      <ns-selector decoration="electrics" checked="">
+      <input type="checkbox" id="question-electrical" name="question" value="electrical" checked="">
+      <label for="question-electrical">Home Electrical Cover</label>
+      <ns-content slot="description" id="selector-nsid-kqo6s0t0lgj">
+      <h3 class="h4 enlighten"><b>£1.00</b> <span>per month</span></h3>
+      <p class="p-normal">Excess <b>£60.00</b> </p>
+      </ns-content>
+      </ns-selector>
+      </ns-inputter>
+    </div>
+
+  </ns-column>
+
+</ns-panel>
+
+
+
+<ns-panel>
+
+  <ns-column>
+  <h3 class="h3 enlighten">Your bank details</h3>
+  <ns-column>
+
+  <ns-inputter mask="" separator="" validation="[&quot;isRequired&quot;]" value="" helper="" name="name-of-the-account-holder">
+  <label slot="label" for="text-input">Name of the account holder</label>
+  <input type="text" id="text-input">
+  </ns-inputter>
+
+  <ns-inputter mask="00-00-00" separator="" ignoreseparator="" validation="[&quot;isRequired&quot;]" value="" helper="" name="sort-code">
+  <label slot="label" for="mask-input">Sort code</label>
+  <input type="text" id="mask-input">
+  </ns-inputter>
+
+  <ns-inputter mask="00000000" separator="" ignoreseparator="" validation="[&quot;isRequired&quot;]" value="" helper="" name="bank-or-building-society-account-number">
+  <label slot="label" for="mask-input">Bank or building society account number</label>
+  <input type="text" id="mask-input">
+  </ns-inputter>
+
+</ns-panel>
+
+
+
+<ns-panel>
+  <ns-column>
+
+    <h3 class="h3 enlighten">Important documents</h3>
+    <ul class="download-list">
+      <li>
+      <ns-download href="this-text-gets-ignored.pdf" filesize="123MB" filetype="pdf">Terms and conditions</ns-download>
+      </li>
+      <li>
+      <ns-download href="this-text-gets-ignored.xls" filesize="123MB" filetype="pdf">Direct Debit guarantee</ns-download>
+      </li>
+      <li>
+      <ns-download href="this-text-gets-ignored.txt" filesize="123MB" filetype="pdf">About our insurance products</ns-download>
+      </li>
+    </ul>
+
+    <p class="p-small">By clicking the Setup Direct Debit Button, I confirm that I have read all important documents.</p>
+    <ns-cta type="direct" href="" icon="arrow-right" onclick="action()" loading="false" loadingmessage="Loading..." tabindex="0">Setup Direct Debit</ns-cta>
+
+    <div style="width: 180px; height: 64px;">
+      <ns-image src="https://user-images.githubusercontent.com/34439889/133385388-721326de-61e9-4b51-9846-cacf2283d22c.png
+      " ratio="1x1" alt="Direct Debit logo" backgroundsize="cover"></ns-image>
+    </div>
+    <p class="p-caption">British Gas originators identification number: <b>948555</b></p>
+
+  </ns-column>
+</ns-panel>

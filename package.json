@@ -1,0 +1,15 @@
+{
+  "name": "enp-optimisations",
+  "version": "1.0.0",
+  "description": "Partnership optimisation worrk",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "S Saha",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^12.0.1"
+  }
+}
