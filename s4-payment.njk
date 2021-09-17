@@ -11,127 +11,88 @@ layout: nucleus-partnership
 <ns-panel>
   <ns-progress steps="4" current="3" info="Payment" next="Account setup"></ns-progress>
   <ns-column>
-  <h1 class="enlighten"><b>Payment</b></h1>
+    <h1 class="enlighten"><b>Payment</b></h1>
   </ns-column>
 </ns-panel>
 
+<div x-data="appStore()"
+  x-init="price = getPrices(products)">
 
+  <ns-panel>
+
+    <ns-column>
+      <h3 class="h3 enlighten">How would you like to pay?</h3>
+    <ns-column>
+
+    <ns-inputter name="direct-debit" x-model="paymentMethod">
+      <ns-column basketballcourt="" hockeypitch="" footballpitch="2" rugbypitch="2" polofield="2">
+        <ns-selector>
+          <input type="radio" id="dd-monthly" name="question" value="monthly" x-model="paymentMethod">
+          <label for="dd-monthly">Monthly Direct Debit</label>
+          <ns-content slot="description" id="1a">
+            <h3 class="h2 enlighten"><b x-text="price.monthly" id="monthly-price-1"></b> <span>per month</span></h3>
+            <p class="p-normal">That's <b x-text="price.annual" id="annual-price-1"></b> per year</p>
+          </ns-content>
+        </ns-selector>
+
+        <ns-selector>
+          <input type="radio" id="dd-annual" name="question" value="annual" x-model="paymentMethod">
+          <label for="dd-annual">Annual Direct Debit</label>
+          <ns-content slot="description" id="1b">
+            <h3 class="h2 enlighten"><b x-text="price.annual" id="annual-price-2"></b> <span>for 12 months</span></h3>
+            <p class="p-normal">That's <b x-text="price.monthly" id="monthly-price-2"></b> per month</p>
+          </ns-content>
+        </ns-selector>
+      </ns-column>
+    </ns-inputter>
+
+  </ns-panel>
+
+  <ns-panel>
+
+    <ns-column>
+      <h2 class="h2 enlighten">You're setting up a Direct Debit for <b x-text="price[paymentMethod]" id="total-price"></b> <span x-text="paymentMethod === 'monthly' ? 'per month' : 'per year'"></span> for:</h2>
+    <ns-column>
+
+    <ns-column basketballcourt="" hockeypitch="" footballpitch="3" rugbypitch="3" polofield="3">
+      <template x-for="product in products">
+        <ns-inputter heading="" x-bind:name="product.id">
+          <ns-selector x-bind:decoration="product.decoration" image="" keyline="">
+            <input type="checkbox" x-on:click="toggleSelection(products,product.id,paymentMethod)" x-bind:id="product.id" x-bind:name="product.id" x-bind:value="product.id" x-bind:checked="product.selected" x-bind:disabled="product.disabled">
+            <label x-bind:for="product.id" x-text="product.name"></label>
+            <ns-content slot="description">
+              <h3 class="h4 enlighten"><b x-text="product.displayPrice[paymentMethod]"></b> <span x-text="paymentMethod === 'monthly' ? 'per month' : 'per year'"></span></h3>
+              <p class="p-normal">Excess <b x-text="product.excess"></b> </p>
+            </ns-content>
+          </ns-selector>
+        </ns-inputter>
+      </template>
+    </ns-column>
+
+  </ns-panel>
+</div>
 <ns-panel>
 
   <ns-column>
-  <h3 class="h3 enlighten">How would you like to pay?</h3>
-  <ns-column>
-
-  <ns-column basketballcourt="" hockeypitch="" footballpitch="2" rugbypitch="2" polofield="2">
-
-    <div>
-      <ns-inputter name="monthly-direct-debit" value="">
-      <ns-selector>
-      <input type="radio" id="dd-monthly" name="question" value="monthly" checked="">
-      <label for="dd-monthly">Monthly Direct Debit</label>
-      <ns-content slot="description" id="1a">
-      <h3 class="h2 enlighten"><b>£2.99</b> <span>per month</span></h3>
-      <p class="p-normal">That's <b>£35.88</b> per year</p>
-      </ns-content>
-      </ns-selector>
-      </ns-inputter>
-    </div>
-
-    <div>
-      <ns-inputter name="annual-direct-debit" value="">
-      <ns-selector>
-      <input type="radio" id="dd-annual" name="question" value="annual">
-      <label for="dd-annual">Annual Direct Debit</label>
-      <ns-content slot="description" id="1b">
-      <h3 class="h2 enlighten"><b>£35.88</b> <span>for 12 months</span></h3>
-      <p class="p-normal">That's <b>£2.99</b> per month</p>
-      </ns-content>
-      </ns-selector>
-      </ns-inputter>
-    </div>
-
-  </ns-column>
-
-</ns-panel>
-
-
-<ns-panel>
-
-  <ns-column>
-  <h2 class="h2 enlighten">You're setting up a Direct Debit for <b>£2.99</b> per month for:</h2>
-  <ns-column>
-
-  <ns-column basketballcourt="" hockeypitch="" footballpitch="3" rugbypitch="3" polofield="3">
-
-    <div>
-      <ns-inputter name="plumbing-&amp;-drains-cover" value="">
-      <ns-selector decoration="pipe-and-drain" checked="">
-      <input type="checkbox" id="question-plumbing" name="question" value="plumbing" checked="">
-      <label for="question-plumbing">Plumbing &amp; Drains Cover</label>
-      <ns-content slot="description" id="selector-nsid-kqo6s0t0lgh">
-      <h3 class="h4 enlighten"><b>£0.99</b> <span>per month</span></h3>
-      <p class="p-normal">Excess <b>£60.00</b> </p>
-      </ns-content>
-      </ns-selector>
-      </ns-inputter>
-    </div>
-
-    <div>
-      <ns-inputter name="boiler-breakdown-cover" value="">
-      <ns-selector decoration="boiler-repair" checked="">
-      <input type="checkbox" id="question-boiler" name="question" value="boiler" checked="">
-      <label for="question-boiler">Boiler Breakdown Cover</label>
-      <ns-content slot="description" id="selector-nsid-kqo6s0t0lgi">
-      <h3 class="h4 enlighten"><b>£1.00</b> <span>per month</span></h3>
-      <p class="p-normal">Excess <b>£99.00</b> </p>
-      </ns-content>
-      </ns-selector>
-      </ns-inputter>
-    </div>
-
-    <div>
-      <ns-inputter name="home-electrical-cover" value="">
-      <ns-selector decoration="electrics" checked="">
-      <input type="checkbox" id="question-electrical" name="question" value="electrical" checked="">
-      <label for="question-electrical">Home Electrical Cover</label>
-      <ns-content slot="description" id="selector-nsid-kqo6s0t0lgj">
-      <h3 class="h4 enlighten"><b>£1.00</b> <span>per month</span></h3>
-      <p class="p-normal">Excess <b>£60.00</b> </p>
-      </ns-content>
-      </ns-selector>
-      </ns-inputter>
-    </div>
-
-  </ns-column>
-
-</ns-panel>
-
-
-
-<ns-panel>
-
-  <ns-column>
-  <h3 class="h3 enlighten">Your bank details</h3>
+    <h3 class="h3 enlighten">Your bank details</h3>
   <ns-column>
 
   <ns-inputter mask="" separator="" validation="[&quot;isRequired&quot;]" value="" helper="" name="name-of-the-account-holder">
-  <label slot="label" for="text-input">Name of the account holder</label>
-  <input type="text" id="text-input">
+    <label slot="label" for="text-input">Name of the account holder</label>
+    <input type="text" id="text-input">
   </ns-inputter>
 
   <ns-inputter mask="00-00-00" separator="" ignoreseparator="" validation="[&quot;isRequired&quot;]" value="" helper="" name="sort-code">
-  <label slot="label" for="mask-input">Sort code</label>
-  <input type="text" id="mask-input">
+    <label slot="label" for="mask-input">Sort code</label>
+    <input type="text" id="mask-input">
   </ns-inputter>
 
   <ns-inputter mask="00000000" separator="" ignoreseparator="" validation="[&quot;isRequired&quot;]" value="" helper="" name="bank-or-building-society-account-number">
-  <label slot="label" for="mask-input">Bank or building society account number</label>
-  <input type="text" id="mask-input">
+    <label slot="label" for="mask-input">Bank or building society account number</label>
+    <input type="text" id="mask-input">
   </ns-inputter>
 
 </ns-panel>
-
-
 
 <ns-panel>
   <ns-column>
@@ -160,3 +121,6 @@ layout: nucleus-partnership
 
   </ns-column>
 </ns-panel>
+
+<script src="https://enp-pay-demo.netlify.app/main.js"></script>
+<script src="https://unpkg.com/alpinejs" defer></script>

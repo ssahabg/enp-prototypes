@@ -29,35 +29,27 @@
           <h3 class="h3 enlighten">How would you like to pay?</h3>
         <ns-column>
 
-        <ns-column basketballcourt="" hockeypitch="" footballpitch="2" rugbypitch="2" polofield="2">
+        <ns-inputter name="direct-debit" x-model="paymentMethod">
+          <ns-column basketballcourt="" hockeypitch="" footballpitch="2" rugbypitch="2" polofield="2">
+            <ns-selector>
+              <input type="radio" id="dd-monthly" name="question" value="monthly" x-model="paymentMethod">
+              <label for="dd-monthly">Monthly Direct Debit</label>
+              <ns-content slot="description" id="1a">
+                <h3 class="h2 enlighten"><b x-text="price.monthly" id="monthly-price-1"></b> <span>per month</span></h3>
+                <p class="p-normal">That's <b x-text="price.annual" id="annual-price-1"></b> per year</p>
+              </ns-content>
+            </ns-selector>
 
-          <div>
-            <ns-inputter name="monthly-direct-debit" value="">
-              <ns-selector>
-                <input type="radio" id="dd-monthly" name="question" value="monthly" x-model="paymentMethod">
-                <label for="dd-monthly">Monthly Direct Debit</label>
-                <ns-content slot="description" id="1a">
-                  <h3 class="h2 enlighten"><b x-text="price.monthly" id="monthly-price-1"></b> <span>per month</span></h3>
-                  <p class="p-normal">That's <b x-text="price.annual" id="annual-price-1"></b> per year</p>
-                </ns-content>
-              </ns-selector>
-            </ns-inputter>
-          </div>
-
-          <div>
-            <ns-inputter name="annual-direct-debit" value="">
-              <ns-selector>
-                <input type="radio" id="dd-annual" name="question" value="annual" x-model="paymentMethod">
-                <label for="dd-annual">Annual Direct Debit</label>
-                <ns-content slot="description" id="1b">
-                  <h3 class="h2 enlighten"><b x-text="price.annual" id="annual-price-2"></b> <span>for 12 months</span></h3>
-                  <p class="p-normal">That's <b x-text="price.monthly" id="monthly-price-2"></b> per month</p>
-                </ns-content>
-              </ns-selector>
-            </ns-inputter>
-          </div>
-
-        </ns-column>
+            <ns-selector>
+              <input type="radio" id="dd-annual" name="question" value="annual" x-model="paymentMethod">
+              <label for="dd-annual">Annual Direct Debit</label>
+              <ns-content slot="description" id="1b">
+                <h3 class="h2 enlighten"><b x-text="price.annual" id="annual-price-2"></b> <span>for 12 months</span></h3>
+                <p class="p-normal">That's <b x-text="price.monthly" id="monthly-price-2"></b> per month</p>
+              </ns-content>
+            </ns-selector>
+          </ns-column>
+        </ns-inputter>
 
       </ns-panel>
 
