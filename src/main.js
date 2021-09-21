@@ -86,6 +86,7 @@
     return {
       paymentMethod: "monthly",
       products,
+      message: getMessage('')
     };
   };
 
@@ -102,4 +103,46 @@
     document.querySelector("#annual-price-1").textContent = price.annual;
     document.querySelector("#annual-price-2").textContent = price.annual;
   };
+
+  let getMessage = function(type) {
+    let message = {};
+
+    switch (type) {
+      case 'success':
+        message = {
+          type: 'success',
+          heading: 'Success!',
+          content: 'Direct debit has been setup successfully.',
+          display: true
+        };
+        break;
+      
+      case 'error':
+        message = {
+          type: 'error',
+          heading: 'Error!',
+          content: 'Please select what you need.',
+          display: true
+        };
+        break;
+      
+      default:
+        message = {
+          type: '',
+          heading: '',
+          content: '',
+          display: false
+        };
+        break;
+    }
+
+    return message;
+  };
+
+  window.onSetupDirectDebit = function(products) {
+    const hasProduct = products.filter((product) => product.selected).length > 0;
+    const type = hasProduct ? 'success' : 'error';
+    const message = getMessage(type);
+    return message;
+  }
 })();

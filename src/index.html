@@ -26,7 +26,7 @@
           <template x-for="product in products">
             <ns-inputter heading="" x-bind:name="product.id">
               <ns-selector x-bind:decoration="product.decoration" image="" keyline="">
-                <input type="checkbox" x-on:click="toggleSelection(products,product.id,paymentMethod)" x-bind:id="product.id" x-bind:name="product.id" x-bind:value="product.id" x-bind:checked="product.selected" x-bind:disabled="product.disabled">
+                <input type="checkbox" x-on:click="toggleSelection(products,product.id,paymentMethod)" x-bind:id="product.id" x-bind:name="product.id" x-bind:value="product.id" x-bind:checked="product.selected">
                 <label x-bind:for="product.id" x-text="product.name"></label>
                 <ns-content slot="description">
                   <h3 class="h4 enlighten"><b x-text="product.displayPrice[paymentMethod]"></b> <span x-text="paymentMethod === 'monthly' ? 'per month' : 'per year'"></span></h3>
@@ -115,9 +115,16 @@
       </ns-panel>
 
       <ns-panel>
+        <template x-if="message.display">
+          <ns-highlighter x-bind:type="message.type">
+            <h2 slot="heading" x-text="message.heading"></h2>
+            <p x-text="message.content"></p>
+          </ns-highlighter>
+        </template>
+
         <ns-content>
           <p class="p-small">By clicking the Setup Direct Debit Button, I confirm that I have read all important documents.</p>
-          <ns-cta type="direct" href="!#">Setup Direct Debit</ns-cta>
+          <ns-cta type="direct" x-on:click="message = onSetupDirectDebit(products)">Setup Direct Debit</ns-cta>
           <figure>
             <img src="https://user-images.githubusercontent.com/34439889/133822183-22c02a41-5ca9-4866-aed8-a39347885155.png" alt="Direct Debit logo" width="194" height="86">
             <figcaption>British Gas originators identification number: <b>948555</b></figcaption>
