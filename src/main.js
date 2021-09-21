@@ -101,6 +101,5 @@
     document.querySelector("#monthly-price-2").textContent = price.monthly;
     document.querySelector("#annual-price-1").textContent = price.annual;
     document.querySelector("#annual-price-2").textContent = price.annual;
-    document.querySelector("#total-price").textContent = price[paymentMethod];
   };
 })();
