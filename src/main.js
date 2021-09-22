@@ -1,50 +1,50 @@
 (function () {
   let products = [
     {
-      id: "pd",
-      name: "Plumbing & Drain Cover",
-      decoration: "pipe-and-drain",
+      id: 'pd',
+      name: 'Plumbing & Drain Cover',
+      decoration: 'pipe-and-drain',
       displayPrice: {
-        monthly: "99p",
+        monthly: '99p',
         annual: `£${(0.99 * 12).toFixed(2)}`,
       },
       price: {
         monthly: 0.99,
         annual: 0.99 * 12,
       },
-      excess: "£60",
+      excess: '£60',
       selected: true,
-      disabled: "disabled",
+      disabled: 'disabled',
     },
     {
-      id: "bdobc",
-      name: "Boiler Breakdown Cover",
-      decoration: "boiler-repair",
+      id: 'bdobc',
+      name: 'Boiler Breakdown Cover',
+      decoration: 'boiler-repair',
       displayPrice: {
-        monthly: "£1.00",
+        monthly: '£1.00',
         annual: `£12.00`,
       },
       price: {
         monthly: 1,
         annual: 12,
       },
-      excess: "£99",
+      excess: '£99',
       selected: false,
       disabled: false,
     },
     {
-      id: "hec",
-      name: "Home Electrical Cover",
-      decoration: "electrics",
+      id: 'hec',
+      name: 'Home Electrical Cover',
+      decoration: 'electrics',
       displayPrice: {
-        monthly: "£1.00",
+        monthly: '£1.00',
         annual: `£12.00`,
       },
       price: {
         monthly: 1,
         annual: 12,
       },
-      excess: "£60",
+      excess: '£60',
       selected: false,
       disabled: false,
     },
@@ -61,8 +61,8 @@
       }
     });
 
-    let monthlyPrice = "";
-    let annualPrice = "";
+    let monthlyPrice = '';
+    let annualPrice = '';
 
     if (monthly >= 1) {
       monthlyPrice = `£${monthly.toFixed(2)}`;
@@ -82,29 +82,26 @@
     };
   };
 
+  let price = getPrices(products);
+
   window.appStore = function () {
     return {
-      paymentMethod: "monthly",
+      paymentMethod: 'monthly',
       products,
-      message: getMessage('')
+      price,
+      message: getMessage(''),
     };
   };
 
-  window.toggleSelection = function (products, id, paymentMethod) {
+  window.toggleSelection = function (products, id) {
     products.forEach((product) => {
       if (product.id === id) {
         product.selected = !product.selected;
       }
     });
-    price = getPrices(products);
-
-    document.querySelector("#monthly-price-1").textContent = price.monthly;
-    document.querySelector("#monthly-price-2").textContent = price.monthly;
-    document.querySelector("#annual-price-1").textContent = price.annual;
-    document.querySelector("#annual-price-2").textContent = price.annual;
   };
 
-  let getMessage = function(type) {
+  let getMessage = function (type) {
     let message = {};
 
     switch (type) {
@@ -113,25 +110,25 @@
           type: 'success',
           heading: 'Success!',
           content: 'Direct debit has been setup successfully.',
-          display: true
+          display: true,
         };
         break;
-      
+
       case 'error':
         message = {
           type: 'error',
           heading: 'Error!',
           content: 'Please select what you need.',
-          display: true
+          display: true,
         };
         break;
-      
+
       default:
         message = {
           type: '',
           heading: '',
           content: '',
-          display: false
+          display: false,
         };
         break;
     }
@@ -139,10 +136,11 @@
     return message;
   };
 
-  window.onSetupDirectDebit = function(products) {
-    const hasProduct = products.filter((product) => product.selected).length > 0;
+  window.onSetupDirectDebit = function (products) {
+    const hasProduct =
+      products.filter((product) => product.selected).length > 0;
     const type = hasProduct ? 'success' : 'error';
     const message = getMessage(type);
     return message;
-  }
+  };
 })();
